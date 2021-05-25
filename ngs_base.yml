@@ -47,3 +47,6 @@ dependencies:
   - plotly = 4.12.0
   # loop caller
   - chromosight >= 1.1.4
+  # image analysis
+  - scikit-image
+  - tifffile
