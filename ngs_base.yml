@@ -41,8 +41,6 @@ dependencies:
   - fastparquet >= 0.4.0 
   # jupyter support
   - jupyterlab >= 3.0.16
-  - pip:
-      - batchspawner == 1.0.1
   - nodejs = 13.12.0
   - plotly = 4.12.0
   # loop caller
@@ -50,3 +48,9 @@ dependencies:
   # image analysis
   - scikit-image
   - tifffile
+  #more ngs tools
+  - pip
+  - pip:
+      - biopython
+      # for cbe batch environment 
+      - batchspawner == 1.0.1

@@ -8,6 +8,13 @@ RUN apt-get update -y &&\
     apt-get install -y gcc g++ make libz-dev &&\
     apt-get clean
 
+# Install OnTAD
+RUN cd /opt && git clone https://github.com/anlin00007/OnTAD.git &&\
+    cd OnTAD &&\
+    git checkout 3da5d9a4569b1f316d4508e60781f22f338f68b1
+RUN              cd /opt/OnTAD/src && make clean && make
+ENV PATH="/opt/OnTAD/src:${PATH}"
+
 # Install ngs_base environment
 ADD ngs_base.yml /temp/install/
 
@@ -27,7 +34,20 @@ RUN conda install mamba -n base -c conda-forge &&\
     # pairlib
     githash=`git ls-remote https://github.com/mirnylab/pairlib.git | grep HEAD | cut -f 1` &&\
     pip install git+git://github.com/mirnylab/pairlib@$githash &&\
-    echo "# pip install git+git://github.com/mirnylab/pairlib@$githash" >> software_versions_git.txt
+    echo "# pip install git+git://github.com/mirnylab/pairlib@$githash" >> software_versions_git.txt &&\
+    # Install gerlich repos and safe the latest git hash
+    # ngs
+    githash=`git ls-remote https://github.com/gerlichlab/ngs.git | grep HEAD | cut -f 1` &&\
+    pip install git+git://github.com/gerlichlab/ngs@$githash &&\
+    echo "# pip install git+git://github.com/gerlichlab/ngs@$githash" >> software_versions_git.txt &&\
+    # cooler_ontad
+    githash=`git ls-remote https://github.com/cchlanger/cooler_ontad.git | grep HEAD | cut -f 1` &&\
+    pip install git+git://github.com/cchlanger/cooler_ontad@$githash &&\
+    echo "# pip install git+git://github.com/cchlanger/cooler_ontad@$githash" >> software_versions_git.txt &&\
+    # higlassup
+    githash=`git ls-remote https://github.com/Mittmich/higlassupload.git | grep HEAD | cut -f 1` &&\
+    pip install git+git://github.com/Mittmich/higlassupload.git@$githash &&\
+    echo "# pip install git+git://github.com/Mittmich/higlassupload.git@$githash" >> software_versions_git.txt
 
 WORKDIR /home
 
