@@ -16,11 +16,11 @@ RUN              cd /opt/OnTAD/src && make clean && make
 ENV PATH="/opt/OnTAD/src:${PATH}"
 
 # Install ngs_base environment
-ADD ngs_base.yml /temp/install/
+ADD gerlich_base.yml /temp/install/
 
 # install mamba
 RUN conda install mamba -n base -c conda-forge &&\
-    mamba env update -n base --f /temp/install/ngs_base.yml &&\
+    mamba env update -n base --f /temp/install/gerlich_base.yml &&\
     mamba list > software_versions_conda.txt &&\
     # Install mirnylabtools
     # bioframe

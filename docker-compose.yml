@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+    jupyter:
+        container_name: gerlich_jupyter
+        volumes:  
+            - ${CODE_DIR}:/code
+            - ${CONFIG_DIR}:/config
+        environment:
+            - JUPYTER_CONFIG_DIR=/config
+        ports:
+            - "9999:9999"
+        image: gerlichlab/gerlich_jupyter
+        entrypoint: "/bin/bash"
+        command: -c "jupyter notebook --ip=0.0.0.0 --no-browser --port 9999 --allow-root"
