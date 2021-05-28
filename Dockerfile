@@ -51,4 +51,17 @@ RUN conda install mamba -n base -c conda-forge &&\
 
 WORKDIR /home
 
+#User for VBC Jupyter Hub
+
+ENV USER jovian
+ENV NB_UID 1000
+ENV HOME /home/${NB_USER}
+
+RUN adduser --disabled-password \
+    --gecos "Default user" \
+    --uid ${NB_UID} \
+    ${NB_USER}
+
+USER jovyan
+
 CMD /bin/bash
