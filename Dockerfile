@@ -24,13 +24,13 @@ RUN conda install mamba -n base -c conda-forge &&\
     mamba list > software_versions_conda.txt &&\
     # Install mirnylabtools
     # bioframe
-    githash=`git ls-remote https://github.com/mirnylab/bioframe.git | grep HEAD | cut -f 1` &&\
-    pip install git+git://github.com/mirnylab/bioframe@$githash &&\
-    echo "# pip install git+git://github.com/mirnylab/bioframe@$githash" >> software_versions_git.txt &&\
+    # githash=`git ls-remote https://github.com/mirnylab/bioframe.git | grep HEAD | cut -f 1` &&\
+    # pip install git+git://github.com/mirnylab/bioframe@$githash &&\
+    # echo "# pip install git+git://github.com/mirnylab/bioframe@$githash" >> software_versions_git.txt &&\
     # cooltools
-    githash=`git ls-remote https://github.com/mirnylab/cooltools.git | grep HEAD | cut -f 1` &&\
-    pip install git+git://github.com/mirnylab/cooltools@$githash &&\
-    echo "# pip install git+git://github.com/mirnylab/cooltools@$githash" >> software_versions_git.txt &&\
+    # githash=`git ls-remote https://github.com/mirnylab/cooltools.git | grep HEAD | cut -f 1` &&\
+    # pip install git+git://github.com/mirnylab/cooltools@$githash &&\
+    # echo "# pip install git+git://github.com/mirnylab/cooltools@$githash" >> software_versions_git.txt &&\
     # pairlib
     githash=`git ls-remote https://github.com/mirnylab/pairlib.git | grep HEAD | cut -f 1` &&\
     pip install git+git://github.com/mirnylab/pairlib@$githash &&\
