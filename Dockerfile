@@ -53,7 +53,7 @@ WORKDIR /home
 
 #User for VBC Jupyter Hub
 
-ENV USER jovian
+ENV NB_USER jovian
 ENV NB_UID 1000
 ENV HOME /home/${NB_USER}
 
@@ -62,6 +62,6 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 
-USER jovyan
+USER jovian
 
 CMD /bin/bash
