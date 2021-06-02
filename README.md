@@ -5,9 +5,9 @@ Our base container with all internally used NGS and image analysis tools preinst
 For your convenience, you can then start a notebook server with all the necessary libraries installed with:
 ```docker-compose up``` from the command line in the repo directory.
 Then just open up a browser and navigate to http://localhost:9999 or http://localhost:9999/lab for the jupyter lab interface. 
-This will prompt you for a password, which will was disclosed in the python club lecture.
+This will prompt you for a password, which was disclosed in the python club lecture.
 
-If you use this setup more regularly pleas change the password in the jupyter_notebook_config.py
+If you use this setup more regularly, please change the password in the jupyter_notebook_config.py
 
 # VBC JupterHub
 
