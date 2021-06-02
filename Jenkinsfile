@@ -2,5 +2,6 @@
 
 buildRepo2Docker([
   imageName: 'jupyter-gerlich',
-  pushRegistryNamespace: 'gerlichlab'
+  pushRegistryNamespace: 'gerlichlab',
+  pushBranches: ['main', 'develop', 'vbc']
 ])
