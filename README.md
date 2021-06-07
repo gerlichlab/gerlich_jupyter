@@ -1,7 +1,7 @@
 # Gerlich Jupyter
 **Gerlich Jupyter** is our base container with all internally used NGS and image analysis tools preinstalled.
 
-# VBC JupterHub
+# VBC JupyterHub
 
 You can run use this container on ```https://jupyterhub.vbc.ac.at/```.
 To set it up, use the following settings.
@@ -10,7 +10,7 @@ To set it up, use the following settings.
  - **Attention:** You do not need to contact IT. We set everything up for you!
 
 
-![Jupyterhub Settings](images/settings.png)
+![JupyterHub Settings](images/settings.png)
 
 
 You change the version by changing the image URL past the double colon:
