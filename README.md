@@ -4,15 +4,26 @@
 # VBC JupterHub
 
 You can run use this container on ```https://jupyterhub.vbc.ac.at/```.
-To set it up, use the following settings:
+To set it up, use the following settings.
+ - Select `JupyterLab based on custom Singularity image (EXPERIMENTAL)`
+ - Type in the link to the image location, you can find a link in the version section below.
+ - **Attention:** You do not need to contact IT. We set everything up for you!
+
+
 ![Jupyterhub Settings](images/settings.png)
+
+
 You change the version by changing the image URL past the double colon:
 `.../gerlichlab/jupyter-gerlich:YOUR_FAVORITE_VERSION`
 
 or <span style="color:red">**copy and past the link from the version subsection bellow.**<span>
 
 Once the server is started, do not choose a specific kernel. Rather, choose the basic Python3 kernel.
+
+
 ![Python Kernel](images/kernel.png)
+
+
 It will contain everything installed in the container.
 
 # Running the notebook locally (OPTIONAL)
@@ -35,6 +46,7 @@ Singularity image URL:
  `https://singularity.vbc.ac.at/v1/imagefile/library/gerlichlab/jupyter-gerlich:version-1.0`
 # How do I get a custom version
  
+- Fork the repository
 - Create a new branch
 - Modify the gerlich_base.yml (e.g., add all your missing libraries or change the version of the libraries)
 - Test your build by running: `docker-compose -f docker-dev.yml up`
