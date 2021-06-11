@@ -64,4 +64,6 @@ RUN adduser --disabled-password \
 
 USER jovian
 
-CMD /bin/bash
+ADD entrypoint.sh /entrypoint.sh
+
+CMD ["/entrypoint.sh"]
