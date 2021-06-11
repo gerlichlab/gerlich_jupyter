@@ -64,6 +64,6 @@ RUN adduser --disabled-password \
 
 USER jovian
 
-ENV PATH=/opt/conda/bin:$PATH
+ENV PATH=/opt/conda/bin:${PATH}
 
 CMD ["/bin/bash"]
