@@ -64,6 +64,6 @@ RUN adduser --disabled-password \
 
 USER jovian
 
-ADD entrypoint.sh /entrypoint.sh
+ENV PATH=/opt/conda/bin:$PATH
 
-CMD ["/entrypoint.sh"]
+CMD ["/bin/bash"]
