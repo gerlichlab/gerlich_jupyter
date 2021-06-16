@@ -31,6 +31,7 @@ dependencies:
   - pairix >= 0.3.7
   # requirements for cooltools:
   - h5py >= 2.10.0 
+  - sparse
   - numba >= 0.48.0 
   - dask >= 2.19.0
   - click >= 7.1.2 
