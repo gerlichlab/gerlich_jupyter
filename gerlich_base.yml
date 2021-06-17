@@ -49,6 +49,9 @@ dependencies:
   # image analysis
   - scikit-image
   - tifffile
+  # plotting
+  - graphviz
+  - python-graphviz
   #more ngs tools
   - pip
   - pip:
