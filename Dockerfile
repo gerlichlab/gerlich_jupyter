@@ -37,7 +37,7 @@ RUN conda install mamba -n base -c conda-forge &&\
     echo "# pip install git+git://github.com/mirnylab/pairlib@$githash" >> software_versions_git.txt &&\
     # Install gerlich repos and safe the latest git hash
     # ngs
-    pip install git+git://github.com/gerlichlab/ngs@master &&\
+    pip install git+git://github.com/gerlichlab/ngs &&\
     # cooler_ontad
     githash=`git ls-remote https://github.com/cchlanger/cooler_ontad.git | grep HEAD | cut -f 1` &&\
     pip install git+git://github.com/cchlanger/cooler_ontad@$githash &&\
