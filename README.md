@@ -39,6 +39,13 @@ A brief description by Michael can be found [here](https://github.com/gerlichlab
 
 # Versions
 
+## Verion 1.3
+
+- Fixed bug in ngs
+
+`https://singularity.vbc.ac.at/v1/imagefile/library/gerlichlab/jupyter-gerlich:version-1.3`
+
+
 ## Verion 1.2
 
 - Version with sparse package installed for dask access of coolers
