@@ -41,7 +41,7 @@ A brief description by Michael can be found [here](https://github.com/gerlichlab
 
 ## Verion 1.3
 
-- Fixed bug in ngs
+- Fixed bug in ngs package
 
 `https://singularity.vbc.ac.at/v1/imagefile/library/gerlichlab/jupyter-gerlich:version-1.3`
 
