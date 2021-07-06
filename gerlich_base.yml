@@ -59,3 +59,4 @@ dependencies:
       - biopython
       # for cbe batch environment 
       - batchspawner == 1.0.1
+      - dask-labextension
