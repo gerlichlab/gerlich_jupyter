@@ -60,3 +60,5 @@ dependencies:
       # for cbe batch environment 
       - batchspawner == 1.0.1
       - dask-labextension
+      # read ROI files .zip or .roi generated with ImageJ
+      - read-roi
