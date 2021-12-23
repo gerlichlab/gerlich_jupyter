@@ -38,12 +38,33 @@ If you use this setup more regularly, please change the password in the jupyter_
 A brief description by Michael can be found [here](https://github.com/gerlichlab/python_club_seq_formats_I).
 
 # Versions
+
+## Verion 1.3
+
+- Fixed bug in ngs package
+
+`https://singularity.vbc.ac.at/v1/imagefile/library/gerlichlab/jupyter-gerlich:version-1.3`
+
+
+## Verion 1.2
+
+- Version with sparse package installed for dask access of coolers
+
+`https://singularity.vbc.ac.at/v1/imagefile/library/gerlichlab/jupyter-gerlich:version-1.2`
+
+## Verion 1.1
+
+- Version with singularity terminal support
+
+`https://singularity.vbc.ac.at/v1/imagefile/library/gerlichlab/jupyter-gerlich:version-1.1`
+
 ## Version 1.0
 - Base version
 
 Singularity image URL:
 
  `https://singularity.vbc.ac.at/v1/imagefile/library/gerlichlab/jupyter-gerlich:version-1.0`
+
 # How do I get a custom version
  
 - Fork the repository
