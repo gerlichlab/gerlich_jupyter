@@ -39,6 +39,10 @@ A brief description by Michael can be found [here](https://github.com/gerlichlab
 
 # Versions
 
+## Verion 1.4
+- Version that supports to read ROI files .zip or .roi generated with ImageJ
+
+
 ## Verion 1.3
 
 - Fixed bug in ngs package

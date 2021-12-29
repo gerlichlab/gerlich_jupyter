@@ -5,7 +5,7 @@ channels:
   - defaults
 dependencies:
   # newest python
-  - python=3.8.0
+  - python = 3.9.9
   # user required tools:
   - cooler >= 0.8.8
   - numpy >= 1.18.5
@@ -42,7 +42,7 @@ dependencies:
   - fastparquet >= 0.4.0 
   # jupyter support
   - jupyterlab >= 3.0.16
-  - nodejs = 13.12.0
+  - nodejs >= 13.12.0
   - plotly = 4.12.0
   - ipywidgets
   # loop caller
@@ -60,3 +60,5 @@ dependencies:
       # for cbe batch environment 
       - batchspawner == 1.0.1
       - dask-labextension
+      # read ROI files .zip or .roi generated with ImageJ
+      - read-roi

@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3:4.9.2
+FROM continuumio/miniconda3:4.10.3
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG C.UTF-8  
 ENV LC_ALL C.UTF-8
@@ -43,9 +43,9 @@ RUN conda install mamba -n base -c conda-forge &&\
     pip install git+git://github.com/cchlanger/cooler_ontad@$githash &&\
     echo "# pip install git+git://github.com/cchlanger/cooler_ontad@$githash" >> software_versions_git.txt &&\
     # higlassup
-    githash=`git ls-remote https://github.com/Mittmich/higlassupload.git | grep HEAD | cut -f 1` &&\
-    pip install git+git://github.com/Mittmich/higlassupload.git@$githash &&\
-    echo "# pip install git+git://github.com/Mittmich/higlassupload.git@$githash" >> software_versions_git.txt
+    githash=`git ls-remote https://github.com/gerlichlab/higlassupload.git | grep HEAD | cut -f 1` &&\
+    pip install git+git://github.com/gerlichlab/higlassupload.git@$githash &&\
+    echo "# pip install git+git://github.com/gerlichlab/higlassupload.git@$githash" >> software_versions_git.txt
 
 WORKDIR /home
 
