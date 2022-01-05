@@ -17,6 +17,8 @@ You change the version by changing the image URL past the double colon:
 `.../gerlichlab/jupyter-gerlich:YOUR_FAVORITE_VERSION`
 
 or <span style="color:red">**copy and past the link from the version subsection bellow.**<span>
+ 
+**Please for now use the chached location!**
 
 Once the server is started, do not choose a specific kernel. Rather, choose the basic Python3 kernel.
 
