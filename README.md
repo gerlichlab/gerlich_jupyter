@@ -41,6 +41,17 @@ A brief description by Michael can be found [here](https://github.com/gerlichlab
 
 # Versions
 
+## Verion 1.5
+- Version 1.4 + opencv, umap and shap
+
+Chached Location:
+ 
+ `/groups/gerlich/labinfo/singularity_images/jupyter-gerlich:version-1.5` 
+ 
+Singularity image URL: 
+
+`https://singularity.vbc.ac.at/v1/imagefile/library/gerlichlab/jupyter-gerlich:version-1.5`
+
 ## Verion 1.4
 - Version that supports to read ROI files .zip or .roi generated with ImageJ
 

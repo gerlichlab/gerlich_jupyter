@@ -53,6 +53,7 @@ dependencies:
   # plotting
   - graphviz
   - python-graphviz
+  - umap-learn
   #more ngs tools
   - pip
   - pip:
@@ -62,3 +63,5 @@ dependencies:
       - dask-labextension
       # read ROI files .zip or .roi generated with ImageJ
       - read-roi
+      - shap
+      - opencv-python-headless
