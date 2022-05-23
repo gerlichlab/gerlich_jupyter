@@ -23,29 +23,29 @@ RUN conda install mamba -n base -c conda-forge &&\
     mamba env update -n base --f /temp/install/gerlich_base.yml &&\
     mamba list > software_versions_conda.txt &&\
     # Install mirnylabtools
-    # bioframe
+    # bioframe -> installed by ngs
     # githash=`git ls-remote https://github.com/mirnylab/bioframe.git | grep HEAD | cut -f 1` &&\
     # pip install git+git://github.com/mirnylab/bioframe@$githash &&\
     # echo "# pip install git+git://github.com/mirnylab/bioframe@$githash" >> software_versions_git.txt &&\
-    # cooltools
+    # cooltools -> installed by ngs
     # githash=`git ls-remote https://github.com/mirnylab/cooltools.git | grep HEAD | cut -f 1` &&\
     # pip install git+git://github.com/mirnylab/cooltools@$githash &&\
     # echo "# pip install git+git://github.com/mirnylab/cooltools@$githash" >> software_versions_git.txt &&\
     # pairlib
-    githash=`git ls-remote https://github.com/mirnylab/pairlib.git | grep HEAD | cut -f 1` &&\
-    pip install git+git://github.com/mirnylab/pairlib@$githash &&\
-    echo "# pip install git+git://github.com/mirnylab/pairlib@$githash" >> software_versions_git.txt &&\
+    githash=`git ls-remote https://github.com/open2c/pairlib.git | grep HEAD | cut -f 1` &&\
+    pip install git+https://github.com/open2c/pairlib@$githash &&\
+    echo "# pip install git+https://github.com/open2c/pairlib@$githash" >> software_versions_git.txt &&\
     # Install gerlich repos and safe the latest git hash
     # ngs
-    pip install git+git://github.com/gerlichlab/ngs &&\
+    pip install git+https://github.com/gerlichlab/ngs &&\
     # cooler_ontad
     githash=`git ls-remote https://github.com/cchlanger/cooler_ontad.git | grep HEAD | cut -f 1` &&\
-    pip install git+git://github.com/cchlanger/cooler_ontad@$githash &&\
-    echo "# pip install git+git://github.com/cchlanger/cooler_ontad@$githash" >> software_versions_git.txt &&\
+    pip install git+https://github.com/cchlanger/cooler_ontad@$githash &&\
+    echo "# pip install git+https://github.com/cchlanger/cooler_ontad@$githash" >> software_versions_git.txt &&\
     # higlassup
     githash=`git ls-remote https://github.com/gerlichlab/higlassupload.git | grep HEAD | cut -f 1` &&\
-    pip install git+git://github.com/gerlichlab/higlassupload.git@$githash &&\
-    echo "# pip install git+git://github.com/gerlichlab/higlassupload.git@$githash" >> software_versions_git.txt
+    pip install git+https://github.com/gerlichlab/higlassupload.git@$githash &&\
+    echo "# pip install git+https://github.com/gerlichlab/higlassupload.git@$githash" >> software_versions_git.txt
 
 WORKDIR /home
 
