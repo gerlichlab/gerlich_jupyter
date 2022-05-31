@@ -46,7 +46,7 @@ A brief description by Michael can be found [here](https://github.com/gerlichlab
 
 Chached Location:
  
- `/groups/gerlich/labinfo/singularity_images/jupyter-gerlich:version-1.5` 
+ `/groups/gerlich/labinfo/Methods/singularity_images/jupyter-gerlich:version-1.5` 
  
 Singularity image URL: 
 
@@ -57,7 +57,7 @@ Singularity image URL:
 
 Chached Location:
  
- `/groups/gerlich/labinfo/singularity_images/jupyter-gerlich:version-1.4` 
+ `/groups/gerlich/labinfo/Methods/singularity_images/jupyter-gerlich:version-1.4` 
  
 Singularity image URL: 
 
@@ -69,7 +69,7 @@ Singularity image URL:
 
 Chached Location:
  
- `/groups/gerlich/labinfo/singularity_images/jupyter-gerlich:version-1.3` 
+ `/groups/gerlich/labinfo/Methods/singularity_images/jupyter-gerlich:version-1.3` 
  
 Singularity image URL: 
  
@@ -82,7 +82,7 @@ Singularity image URL:
 
 Chached Location:
  
- `/groups/gerlich/labinfo/singularity_images/jupyter-gerlich:version-1.2` 
+ `/groups/gerlich/labinfo/Methods/singularity_images/jupyter-gerlich:version-1.2` 
  
 Singularity image URL:
  
@@ -94,7 +94,7 @@ Singularity image URL:
 
 Chached Location:
  
- `/groups/gerlich/labinfo/singularity_images/jupyter-gerlich:version-1.1` 
+ `/groups/gerlich/labinfo/Methods/singularity_images/jupyter-gerlich:version-1.1` 
  
 Singularity image URL:
  
@@ -105,7 +105,7 @@ Singularity image URL:
 
 Chached Location:
  
- `/groups/gerlich/labinfo/singularity_images/jupyter-gerlich:version-1.0` 
+ `/groups/gerlich/labinfo/Methods/singularity_images/jupyter-gerlich:version-1.0` 
  
 Singularity image URL:
 
