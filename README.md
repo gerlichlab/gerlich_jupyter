@@ -1,12 +1,12 @@
 # Gerlich Jupyter
-**Gerlich Jupyter** is our base container with all internally used NGS and image analysis tools preinstalled.
+**Gerlich Jupyter** This is the the Gerlich group base container for [JupyterHub](https://jupyterhub.vbc.ac.at/), with all internally used NGS and image analysis tools preinstalled.
 
-# VBC JupyterHub
+# Startup on VBC JupyterHub
 
-You can run use this container on ```https://jupyterhub.vbc.ac.at/```.
+You can run use this container on [JupyterHub](https://jupyterhub.vbc.ac.at/).
 To set it up, use the following settings.
- - Select `JupyterLab based on custom Singularity image (EXPERIMENTAL)`
- - Type in the link to the image location, you can find a link in the version section below.
+ - After authenticating on JupyterHub and clicking "Add New Server" on the hub homepage, select `JupyterLab based on custom Singularity image (EXPERIMENTAL)`
+ - Type in the link to the image location, you can find a link in the [versions](#versions) section below.
  - **Attention:** You do not need to contact IT. We set everything up for you!
 
 
@@ -75,7 +75,6 @@ Singularity image URL:
  
 `https://singularity.vbc.ac.at/v1/imagefile/library/gerlichlab/jupyter-gerlich:version-1.3`
 
-
 ## Verion 1.2
 
 - Version with sparse package installed for dask access of coolers
@@ -111,12 +110,12 @@ Singularity image URL:
 
  `https://singularity.vbc.ac.at/v1/imagefile/library/gerlichlab/jupyter-gerlich:version-1.0`
 
-# How do I get a custom version
+# How do I get a custom version?
  
-- Fork the repository
-- Create a new branch
-- Modify the gerlich_base.yml (e.g., add all your missing libraries or change the version of the libraries)
-- Test your build by running: `docker-compose -f docker-dev.yml up`
-- Test your notebook in the browser: http://localhost:9999
-- Pushing your branch will create a pull request. Add a description for your version, including what is different from the base version and why it was created. The description can be extended and modified on the GitHub homepage.
-- Contact Christoph or Michael. We will give it a new version number and make it available on jupyterhub.vbc.ac.at
+1. Fork the repository
+1. Create a new branch
+1. Modify the gerlich_base.yml (e.g., add all your missing libraries or change the version of the libraries)
+1. Test your build by running: `docker-compose -f docker-dev.yml up`
+1. Test your notebook in the browser: `http://localhost:9999`
+1. Pushing your branch will create a pull request. Add a description for your version, including what is different from the base version and why it was created. The description can be extended and modified on the GitHub homepage.
+1. Contact Christoph or Michael. We will give it a new version number and make it available on JupyterHub, at `jupyterhub.vbc.ac.at`
