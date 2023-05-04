@@ -13,12 +13,12 @@ To set it up, use the following settings.
 ![JupyterHub Settings](images/settings.png)
 
 
-You change the version by changing the image URL past the double colon:
+You change the version by changing the version identifier, which is the part of the image URL after the colon:
 `.../gerlichlab/jupyter-gerlich:YOUR_FAVORITE_VERSION`
 
-or <span style="color:red">**copy and past the link from the version subsection bellow.**<span>
+or <span style="color:red">**copy and past the link from the version subsection below.**<span>
  
-**Please for now use the chached location!**
+**Please for now use the cached location!**
 
 Once the server is started, do not choose a specific kernel. Rather, choose the basic Python3 kernel.
 
@@ -30,7 +30,7 @@ It will contain everything installed in the container.
 
 # Running the notebook locally (OPTIONAL)
 For your convenience, you can then start a notebook server with all the necessary libraries installed with:
-`docker-compose up` from the command line in the directory of this rpository.
+`docker-compose up` from the command line in the directory of this repository.
 Then open up a browser and navigate to http://localhost:9999 or http://localhost:9999/lab for the jupyter lab interface. 
 This will prompt you for a password, which we disclosed in the python club lecture.
 
