@@ -41,7 +41,9 @@ dependencies:
   - pyarrow >= 0.17.1
   - fastparquet >= 0.4.0 
   # jupyter support
-  - jupyterlab >= 3.0.16
+  - jupyterlab >= 3.4.0
+  # See: https://github.com/jupyterhub/jupyterhub/pull/4039
+  - jupyterhub-singleuser=2.3.0
   - nodejs >= 13.12.0
   - plotly = 4.12.0
   - ipywidgets
@@ -59,7 +61,7 @@ dependencies:
   - pip:
       - biopython
       # for cbe batch environment 
-      - batchspawner == 1.0.1
+      - batchspawner == 1.1.0
       - dask-labextension
       # read ROI files .zip or .roi generated with ImageJ
       - read-roi
