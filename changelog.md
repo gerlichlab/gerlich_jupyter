@@ -1,5 +1,19 @@
 # Changelog
 
+## Verion 1.7
+- Version 1.6 - updated bioframe to v0.6.2
+
+Chached Location:
+
+ `/groups/gerlich/labinfo/Methods/singularity_images/jupyter-gerlich:version-1.7`
+
+Singularity image URL:
+
+`https://singularity.vbc.ac.at/v1/imagefile/library/gerlichlab/jupyter-gerlich:version-1.7`
+
+## Verion 1.6
+- Version 1.5 - updated jupyterlab and batch spawner
+
 ## Verion 1.5
 - Version 1.4 + opencv, umap and shap
 
