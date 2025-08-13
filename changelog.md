@@ -1,7 +1,7 @@
 # Changelog
 
 ## Verion 1.8
-- Version 1.7 - lmfit and linescan tool
+- Version 1.7 - lmfit and linescan tool, and removed legacy NGS packages
 
 Cached Location:
 

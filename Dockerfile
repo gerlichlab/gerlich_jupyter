@@ -1,59 +1,46 @@
-FROM continuumio/miniconda3:4.10.3
+FROM continuumio/miniconda3:24.5.0-0
+
 ENV DEBIAN_FRONTEND=noninteractive
-ENV LANG C.UTF-8  
-ENV LC_ALL C.UTF-8
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+ENV PATH=/opt/conda/bin:$PATH
 
-# Update and create base image
-RUN apt-get update -y &&\
-    apt-get install -y gcc g++ make libz-dev &&\
-    apt-get clean
+# System deps: build tools for OnTAD, git for cloning, and zlib headers
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        build-essential \
+        zlib1g-dev \
+        git \
+        ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
 
-# Install OnTAD
-RUN cd /opt && git clone https://github.com/anlin00007/OnTAD.git &&\
-    cd OnTAD &&\
+# Install OnTAD (pinned commit)
+RUN cd /opt && git clone https://github.com/anlin00007/OnTAD.git && \
+    cd OnTAD && \
     git checkout 3da5d9a4569b1f316d4508e60781f22f338f68b1
-RUN              cd /opt/OnTAD/src && make clean && make
-ENV PATH="/opt/OnTAD/src:${PATH}"
+RUN cd /opt/OnTAD/src && make clean && make
+ENV PATH=/opt/OnTAD/src:$PATH
 
-# Install ngs_base environment
+# Add conda environment spec
 ADD gerlich_base.yml /temp/install/
 
-# install mamba
-RUN conda install mamba -n base -c conda-forge &&\
-    mamba env update -n base --f /temp/install/gerlich_base.yml &&\
-    mamba list > software_versions_conda.txt &&\
-    # Install mirnylabtools
-    # bioframe -> installed by ngs
-    # githash=`git ls-remote https://github.com/mirnylab/bioframe.git | grep HEAD | cut -f 1` &&\
-    # pip install git+git://github.com/mirnylab/bioframe@$githash &&\
-    # echo "# pip install git+git://github.com/mirnylab/bioframe@$githash" >> software_versions_git.txt &&\
-    # cooltools -> installed by ngs
-    # githash=`git ls-remote https://github.com/mirnylab/cooltools.git | grep HEAD | cut -f 1` &&\
-    # pip install git+git://github.com/mirnylab/cooltools@$githash &&\
-    # echo "# pip install git+git://github.com/mirnylab/cooltools@$githash" >> software_versions_git.txt &&\
-    # pairlib
-    githash=`git ls-remote https://github.com/open2c/pairlib.git | grep HEAD | cut -f 1` &&\
-    pip install git+https://github.com/open2c/pairlib@$githash &&\
-    echo "# pip install git+https://github.com/open2c/pairlib@$githash" >> software_versions_git.txt &&\
-    # Install gerlich repos and safe the latest git hash
-    # ngs
-    pip install git+https://github.com/gerlichlab/ngs &&\
-    # cooler_ontad
-    githash=`git ls-remote https://github.com/cchlanger/cooler_ontad.git | grep HEAD | cut -f 1` &&\
-    pip install git+https://github.com/cchlanger/cooler_ontad@$githash &&\
-    echo "# pip install git+https://github.com/cchlanger/cooler_ontad@$githash" >> software_versions_git.txt &&\
-    #linescan
-    githash=`git ls-remote https://github.com/gerlichlab/linescan.git | grep HEAD | cut -f 1` &&\
-    pip install git+https://github.com/gerlichlab/linescan@$githash &&\
-    echo "# pip install git+https://github.com/gerlichlab/linescan@$githash" >> software_versions_git.txt &&
+# Install mamba and environment, then Python packages from GitHub (HTTPS)
+RUN conda install -y -n base -c conda-forge mamba && \
+    mamba env update -n base --file /temp/install/gerlich_base.yml && \
+    mamba list > software_versions_conda.txt && \
+    githash=$(git ls-remote https://github.com/cchlanger/cooler_ontad.git | grep HEAD | cut -f 1) && \
+    pip install --no-cache-dir git+https://github.com/cchlanger/cooler_ontad@${githash} && \
+    echo "# pip install git+https://github.com/cchlanger/cooler_ontad@${githash}" >> software_versions_git.txt && \
+    githash=$(git ls-remote https://github.com/gerlichlab/linescan.git | grep HEAD | cut -f 1) && \
+    pip install --no-cache-dir git+https://github.com/gerlichlab/linescan@${githash} && \
+    echo "# pip install git+https://github.com/gerlichlab/linescan@${githash}" >> software_versions_git.txt
 
 WORKDIR /home
 
-#User for VBC Jupyter Hub
-
-ENV NB_USER jovian
-ENV NB_UID 1000
-ENV HOME /home/${NB_USER}
+# User for VBC Jupyter Hub
+ENV NB_USER=jovian
+ENV NB_UID=1000
+ENV HOME=/home/${NB_USER}
 
 RUN adduser --disabled-password \
     --gecos "Default user" \
@@ -61,7 +48,5 @@ RUN adduser --disabled-password \
     ${NB_USER}
 
 USER jovian
-
-ENV PATH=/opt/conda/bin:${PATH}
 
 CMD ["/bin/bash"]
