@@ -1,5 +1,17 @@
 # Changelog
 
+## Verion 1.8
+- Version 1.7 - lmfit and linescan tool
+
+Cached Location:
+
+ `/groups/gerlich/labinfo/Methods/singularity_images/gerlich_jupyter_version-1.8.sif`
+
+Singularity image URL:
+
+`https://singularity.vbc.ac.at/v1/imagefile/library/gerlichlab/jupyter-gerlich:version-1.8`
+
+
 ## Verion 1.7
 - Version 1.6 - updated bioframe to v0.6.2
 
