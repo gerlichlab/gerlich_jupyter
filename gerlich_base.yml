@@ -57,6 +57,7 @@ dependencies:
   - python-graphviz
   - umap-learn
   - lmfit
+  - tqdm
   #more ngs tools
   - pip
   - pip:
