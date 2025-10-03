@@ -24,11 +24,12 @@ ENV PATH=/opt/OnTAD/src:$PATH
 # Add conda environment spec
 ADD gerlich_base.yml /temp/install/
 
-# Install mamba and environment, then Python packages from GitHub (HTTPS)
-RUN conda install -y -n base -c conda-forge mamba && \
-    mamba env update -n base --file /temp/install/gerlich_base.yml && \
-    mamba list > software_versions_conda.txt && \
-    githash=$(git ls-remote https://github.com/cchlanger/cooler_ontad.git | grep HEAD | cut -f 1) && \
+# Update the environment using conda
+RUN conda env update -n base --file /temp/install/gerlich_base.yml && \
+    conda list > software_versions_conda.txt
+
+# Install Python packages from GitHub
+RUN githash=$(git ls-remote https://github.com/cchlanger/cooler_ontad.git | grep HEAD | cut -f 1) && \
     pip install --no-cache-dir git+https://github.com/cchlanger/cooler_ontad@${githash} && \
     echo "# pip install git+https://github.com/cchlanger/cooler_ontad@${githash}" >> software_versions_git.txt && \
     githash=$(git ls-remote https://github.com/gerlichlab/linescan.git | grep HEAD | cut -f 1) && \
