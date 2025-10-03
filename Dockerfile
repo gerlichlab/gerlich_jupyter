@@ -1,11 +1,10 @@
 FROM mambaorg/micromamba:1.5.8
 
-ENV DEBIAN_FRONTEND=noninteractive
-ENV LANG=C.UTF-8
-ENV LC_ALL=C.UTF-8
-ENV PATH=/opt/conda/bin:$PATH
+# Use root + plain bash for system packages to avoid privilege drop
+USER root
+SHELL ["/bin/bash", "-lc"]
 
-# System deps: build tools for OnTAD, git for cloning, and zlib headers
+# System deps
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         build-essential \
@@ -14,40 +13,49 @@ RUN apt-get update && \
         ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
-# Install OnTAD (pinned commit)
-RUN cd /opt && git clone https://github.com/anlin00007/OnTAD.git && \
-    cd OnTAD && \
-    git checkout 3da5d9a4569b1f316d4508e60781f22f338f68b1
-RUN cd /opt/OnTAD/src && make clean && make
+# Build OnTAD as root (writes under /opt)
+RUN git clone https://github.com/anlin00007/OnTAD.git /opt/OnTAD && \
+    cd /opt/OnTAD && \
+    git checkout 3da5d9a4569b1f316d4508e60781f22f338f68b1 && \
+    make -C src clean && make -C src
 ENV PATH=/opt/OnTAD/src:$PATH
 
-# Add conda environment spec
-ADD gerlich_base.yml /temp/install/
+# Hand env file to the unprivileged user
+ARG MAMBA_USER=mambauser
+COPY --chown=${MAMBA_USER}:${MAMBA_USER} gerlich_base.yml /tmp/gerlich_base.yml
 
-# Update the environment using micromamba
-RUN micromamba install -y -n base -f /temp/install/gerlich_base.yml && \
-    micromamba list > software_versions_conda.txt
+# Switch back to the micromamba wrapper shell for conda-style activation
+SHELL ["/usr/local/bin/_dockerfile_shell.sh"]
+USER ${MAMBA_USER}
 
-# Install Python packages from GitHub
+# Create a named env (don’t touch base)
+RUN micromamba env create -y -n gerlich -f /tmp/gerlich_base.yml && \
+    micromamba clean -a -y
+
+# Snapshot the environment (pre-pip)
+RUN micromamba list -n gerlich > /home/software_versions_conda_pre_pip.txt && \
+    micromamba env export -n gerlich --no-builds > /home/environment_pre_pip.lock.yml && \
+    micromamba list -n gerlich --explicit > /home/conda_explicit_pre_pip.txt
+
+# Ensure the env’s bin comes first at runtime
+ENV PATH=/opt/conda/envs/gerlich/bin:$PATH
+
+# Do pip installs INTO that env
+# Use micromamba run -n <env> to guarantee the right Python/pip is used
 RUN githash=$(git ls-remote https://github.com/cchlanger/cooler_ontad.git | grep HEAD | cut -f 1) && \
-    pip install --no-cache-dir git+https://github.com/cchlanger/cooler_ontad@${githash} && \
+    micromamba run -n gerlich pip install --no-cache-dir "git+https://github.com/cchlanger/cooler_ontad@${githash}" && \
     echo "# pip install git+https://github.com/cchlanger/cooler_ontad@${githash}" >> software_versions_git.txt && \
     githash=$(git ls-remote https://github.com/gerlichlab/linescan.git | grep HEAD | cut -f 1) && \
-    pip install --no-cache-dir git+https://github.com/gerlichlab/linescan@${githash} && \
+    micromamba run -n gerlich pip install --no-cache-dir "git+https://github.com/gerlichlab/linescan@${githash}" && \
     echo "# pip install git+https://github.com/gerlichlab/linescan@${githash}" >> software_versions_git.txt
 
+# If you need a specific runtime user:
+# Note: micromamba image already has mambauser with UID 1000.
+# If you must use 'jovian', pick a different UID to avoid collision.
+# USER root
+# RUN useradd -m -u 1001 -s /bin/bash jovian && \
+#     usermod -aG users jovian
+# USER jovian
+
 WORKDIR /home
-
-# User for VBC Jupyter Hub
-ENV NB_USER=jovian
-ENV NB_UID=1000
-ENV HOME=/home/${NB_USER}
-
-RUN adduser --disabled-password \
-    --gecos "Default user" \
-    --uid ${NB_UID} \
-    ${NB_USER}
-
-USER jovian
-
 CMD ["/bin/bash"]
