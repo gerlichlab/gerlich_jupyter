@@ -34,7 +34,7 @@ RUN micromamba env create -y -n gerlich -f /tmp/gerlich_base.yml && \
 
 # Snapshot the environment (pre-pip)
 RUN micromamba list -n gerlich > /home/software_versions_conda_pre_pip.txt && \
-    micromamba env export -n gerlich --no-builds > /home/environment_pre_pip.lock.yml && \
+    micromamba env export -n gerlich > /home/environment_pre_pip.lock.yml && \
     micromamba list -n gerlich --explicit > /home/conda_explicit_pre_pip.txt
 
 # Ensure the env’s bin comes first at runtime
