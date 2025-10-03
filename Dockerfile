@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3:24.5.0-0
+FROM mambaorg/micromamba:1.5.8
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG=C.UTF-8
@@ -24,9 +24,9 @@ ENV PATH=/opt/OnTAD/src:$PATH
 # Add conda environment spec
 ADD gerlich_base.yml /temp/install/
 
-# Update the environment using conda
-RUN conda env update -n base --file /temp/install/gerlich_base.yml && \
-    conda list > software_versions_conda.txt
+# Update the environment using micromamba
+RUN micromamba install -y -n base -f /temp/install/gerlich_base.yml && \
+    micromamba list > software_versions_conda.txt
 
 # Install Python packages from GitHub
 RUN githash=$(git ls-remote https://github.com/cchlanger/cooler_ontad.git | grep HEAD | cut -f 1) && \
